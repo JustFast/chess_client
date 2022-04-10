@@ -31,7 +31,6 @@ async function draw_board() {
     for (let i = 0; i < game_board.length; i++) {
         for (let j = 0; j < game_board[i].length; j++) {
             if (game_board[i][j][0] != 0 && game_board[i][j][1] != -1) { // Aspect you better not screw me over
-                console.log(images[game_board[i][j][1]][game_board[i][j][0]]);
                 ctx.drawImage(
                     images[game_board[i][j][1]][game_board[i][j][0]],
                     (canvas.width / 8) * j,
