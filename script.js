@@ -140,6 +140,5 @@ function connect() {
         await images[1][i].decode();
     }
     window.onresize();
-    connect();
 })();
 
