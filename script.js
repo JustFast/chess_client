@@ -91,8 +91,6 @@ wsurl.onkeydown = function (e) {
 }
 
 function connect() {
-    popup(1, "Attempting to connect...");
-
     let ws;
     try {
         ws = new WebSocket(wsurl.value);
