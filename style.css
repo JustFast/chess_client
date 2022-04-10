@@ -9,8 +9,14 @@ body {
     display: block;
 }
 
+#player_turn {
+    font-size: 1em;
+    margin: 0;
+    transition: all 0.2s ease-out;
+}
+
 .popup_container {
-    display: block;
+    display: none;
     z-index: 1;
     position: absolute;
     background-color: rgba(102, 102, 102, 0.5);

@@ -8,6 +8,7 @@ const boardctx = boardcanvas.getContext("2d");
 const popup_container = document.getElementsByClassName("popup_container")[0];
 const popup_text = document.getElementById("popup_text");
 const wsurl = document.getElementById("wsurl");
+const player_turn = document.getElementById("player_turn");
 
 // Remember to close websocket
 
@@ -63,11 +64,7 @@ window.onresize = function () {
         for (let x = 0; x < canvas.height; x += (canvas.width / 8)) {
             boardctx.fillRect(x, y, canvas.width / 8, canvas.height / 8);
             if (x != canvas.width - (canvas.width / 8)) { // Hacky solution lmao
-                if (boardctx.fillStyle == black) {
-                    boardctx.fillStyle = white;
-                } else {
-                    boardctx.fillStyle = black;
-                }
+                boardctx.fillStyle = (boardctx.fillStyle == black) ? white : black;
             }
         }
     }
@@ -86,7 +83,9 @@ popup_container.onanimationend = function () {
 
 wsurl.onkeydown = function (e) {
     if (e.key == "Enter") { // Shhhh...
-        ws.close();
+        if (ws != undefined) {
+            ws.close();
+        }
         connect();
     }
 }
@@ -113,6 +112,15 @@ function connect() {
             case "game_board":
                 game_board = obj.board;
                 draw_board();
+                player_turn.style.opacity = 0;
+                if (obj.turn == 0) {
+                    player_turn.style.color = black;
+                    player_turn.innerHTML = "Black's turn";
+                } else {
+                    player_turn.style.color = white;
+                    player_turn.innerHTML = "White's turn";
+                }
+                player_turn.style.opacity = 1;
                 break;
             case "game_end":
                 let winner_str = (obj.winner == 0) ? "black" : "white";
