@@ -93,7 +93,9 @@ wsurl.onkeydown = function (e) {
 function connect() {
     let ws;
     try {
-        ws = new WebSocket(wsurl.value);
+        if (wsurl.value !== null) {
+            ws = new WebSocket(wsurl.value);
+        }
     } catch (e) {
         popup(3, "Failed to connect (see console for error)");
         console.log(e);
