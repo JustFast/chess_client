@@ -10,7 +10,7 @@ body {
 }
 
 .popup_container {
-    display: none;
+    display: block;
     z-index: 1;
     position: absolute;
     background-color: rgba(102, 102, 102, 0.5);
@@ -25,26 +25,20 @@ body {
     transition: animation 0.5s ease-out;
 }
 
-@keyframes pop_in {
-    0% {
-        transform: scale(1) translateY(-50%);
-    }
-    100% {
-        transform: scale(0) translateY(-50%);
-    }
-}
-
-@keyframes pop_out {
+@keyframes popup {
     0% {
         transform: scale(0) translateY(-50%);
     }
-    50% {
+    25% {
         transform: scale(1) translateY(-50%);
     }
-    70% {
+    30% {
         transform: scaleY(1.2) translateY(-50%);
     }
-    100% {
+    37% {
         transform: scale(1) translateY(-50%);
+    }
+    100% {
+        transform: scale(0) translateY(-50%);
     }
 }
