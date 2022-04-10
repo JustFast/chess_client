@@ -23,6 +23,7 @@ let game_board = [
 ];
 
 let images = [[],[]];
+let ws;
 
 async function draw_board() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -85,12 +86,12 @@ popup_container.onanimationend = function () {
 
 wsurl.onkeydown = function (e) {
     if (e.key == "Enter") { // Shhhh...
+        ws.close();
         connect();
     }
 }
 
 function connect() {
-    let ws;
     try {
         ws = new WebSocket(wsurl.value);
     } catch (e) {
